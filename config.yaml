@@ -1,0 +1,67 @@
+# Faceless Shorts Factory — GTA niche defaults
+niche: "GTA 6"
+brand_name: "Vice Drop"
+
+video:
+  width: 1080
+  height: 1920
+  fps: 30
+  max_seconds: 45
+  # Font used for big captions (place a .ttf in assets/fonts/ to override)
+  font_size: 72
+  title_font_size: 56
+  caption_color: "white"
+  caption_stroke: "black"
+  caption_stroke_width: 4
+  # Background when no b-roll is available: gradient | solid | broll
+  background_mode: "gradient"
+  gradient_colors: ["#0a1628", "#1a3a5c", "#c45c26"]
+  # Prefer clips from assets/broll/ when present
+  prefer_broll: true
+
+tts:
+  # edge-tts voice. List with: python -m faceless_shorts voices
+  voice: "en-US-ChristopherNeural"
+  rate: "+8%"
+  volume: "+0%"
+
+script:
+  # template | openai (needs OPENAI_API_KEY)
+  mode: "template"
+  tone: "urgent, confident, beginner-friendly"
+  max_words: 110
+  call_to_action: "Follow for more GTA 6 money routes."
+
+youtube:
+  enabled: false
+  category_id: "20"  # Gaming
+  privacy: "private"  # private | unlisted | public — start private while testing
+  made_for_kids: false
+  tags:
+    - "GTA 6"
+    - "GTA VI"
+    - "GTA tips"
+    - "faceless shorts"
+    - "gaming shorts"
+  # OAuth client secrets file from Google Cloud Console
+  client_secrets: "credentials/client_secret.json"
+  token_file: "credentials/youtube_token.json"
+
+export:
+  # Always write finished MP4 + metadata here for TikTok / Reels / manual upload
+  folder: "output/ready_to_post"
+  write_caption_txt: true
+  write_hashtags: true
+
+scheduler:
+  # Local daily batch (does not bypass platform rules)
+  posts_per_day: 2
+  run_hour_local: 9
+
+compliance:
+  # This tool generates ORIGINAL commentary. Do not feed ripped trailers/cutscenes.
+  remind_copyright: true
+  disallow_filename_patterns:
+    - "trailer"
+    - "cutscene"
+    - "official_ost"
